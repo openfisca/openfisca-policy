@@ -52,9 +52,6 @@ dev = [
 [tool.ruff]
 line-length = 119
 
-[tool.uv.sources]
-openfisca-data-manager = { path = "../openfisca-data-manager", editable = true }
-
 [tool.ruff.lint]
 select = ["E", "F", "W", "I001", "B", "A", "C4", "T20", "SIM", "PTH", "N"]
 ignore = [

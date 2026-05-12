@@ -27,6 +27,7 @@ dependencies = [
     'openfisca-core >=44.6.0',
     'OpenFisca-Data-Manager @ git+https://github.com/openfisca/openfisca-data-manager.git',
     'pandas >=2.0.3, < 3.0',
+    'scipy >=1.10.1, < 2.0',
     'weightedcalcs >=0.1.2, < 0.2.0',
 ]
 
@@ -44,9 +45,12 @@ matching = [
     'rpy2 >=3.5.10, < 4.0',
 ]
 dev = [
+    'openfisca-country-template >=7.1.5, <8.0.0',
     'pytest',
     'pytest-cov',
+    'pytest-order',
     'ruff',
+    'tabulate >=0.9.0, < 0.10.0',
 ]
 
 [tool.ruff]

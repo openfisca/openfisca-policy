@@ -1,0 +1,73 @@
+[project]
+name = "OpenFisca-Policy"
+version = "7.0.0"
+description = "Policy-oriented survey simulation helpers for OpenFisca"
+readme = "README.md"
+keywords = ["microsimulation", "tax", "benefit", "policy", "openfisca"]
+authors = [
+  {name = "OpenFisca Team", email = "contact@openfisca.fr"},
+]
+license = "AGPL-3.0-or-later"
+classifiers = [
+    "Development Status :: 5 - Production/Stable",
+    "Operating System :: POSIX",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Information Analysis",
+]
+requires-python = ">= 3.9"
+dependencies = [
+    'humanize >=4.6.0, < 5.0',
+    'numpy >=1.24.2, <2.0; python_version < "3.11"',
+    'numpy >=1.26.0, <=3.0; python_version <= "3.12"',
+    'numpy >=2.1.0, <=3.0; python_version >= "3.13"',
+    'openfisca-core >=44.6.0',
+    'OpenFisca-Data-Manager @ git+https://github.com/openfisca/openfisca-data-manager.git',
+    'pandas >=2.0.3, < 3.0',
+    'weightedcalcs >=0.1.2, < 0.2.0',
+]
+
+[project.urls]
+Homepage = "https://github.com/openfisca/openfisca-policy"
+Repository = "https://github.com/openfisca/openfisca-policy"
+Issues = "https://github.com/openfisca/openfisca-policy/issues"
+
+[build-system]
+requires = ["setuptools", "setuptools-scm"]
+build-backend = "setuptools.build_meta"
+
+[project.optional-dependencies]
+matching = [
+    'rpy2 >=3.5.10, < 4.0',
+]
+dev = [
+    'pytest',
+    'pytest-cov',
+    'ruff',
+]
+
+[tool.ruff]
+line-length = 119
+
+[tool.uv.sources]
+openfisca-data-manager = { path = "../openfisca-data-manager", editable = true }
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I001", "B", "A", "C4", "T20", "SIM", "PTH", "N"]
+ignore = [
+    "N801",
+    "N805",
+]
+
+[tool.pytest.ini_options]
+testpaths = "tests"
+python_files = ["test_*.py"]
+
+[tool.setuptools.packages.find]
+include = ["openfisca_policy*"]
+
+[tool.setuptools.package-data]
+openfisca_policy = ["py.typed", "assets/COICOP/1998/*", "assets/COICOP/2016/*"]
